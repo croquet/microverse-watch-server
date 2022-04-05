@@ -2,7 +2,6 @@
   "name": "microverse-watch-server",
   "version": "1.0.0",
   "description": "A server to serve behavior files for microverse",
-  "private": true,
   "bin": {
     "watch-server": "./watch-server.js"
   },
