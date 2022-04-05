@@ -1,0 +1,15 @@
+{
+  "name": "microverse-watch-server",
+  "version": "1.0.0",
+  "description": "A server to serve behavior files for microverse",
+  "private": true,
+  "bin": {
+    "watch-server": "./watch-server.js"
+  },
+  "author": "Croquet Corporation",
+  "license": "ISC",
+  "dependencies": {
+    "chokidar": "^3.5.3",
+    "ws": "^8.5.0"
+  }
+}
