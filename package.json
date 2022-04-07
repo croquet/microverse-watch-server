@@ -7,6 +7,9 @@
   },
   "author": "Croquet Corporation",
   "license": "ISC",
+  "publishConfig": {
+    "access": "public"
+  },
   "dependencies": {
     "chokidar": "^3.5.3",
     "ws": "^8.5.0"
