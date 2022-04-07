@@ -1,5 +1,5 @@
 {
-  "name": "microverse-watch-server",
+  "name": "@croquet/microverse-watch-server",
   "version": "1.0.0",
   "description": "A server to serve behavior files for microverse",
   "bin": {
