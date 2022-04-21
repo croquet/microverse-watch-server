@@ -24,8 +24,16 @@ if (process.argv[2]) {
 let cwd = process.cwd();
 let directory = process.argv[2 + numFlags];
 
+let prefix = "";
+
 if (!directory) {
-    directory = path.join(`${cwd}/behaviors`);
+    directory = path.resolve(cwd, "behaviors");
+}
+
+let split = directory.split(path.sep);
+let behaviorIndex = split.indexOf("behaviors");
+if (behaviorIndex >= 0 && behaviorIndex !== split.length - 1) {
+    prefix = path.join(...split.slice(behaviorIndex + 1)) + "/";
 }
 
 try {
@@ -38,6 +46,7 @@ try {
 
 console.log("current directory:", cwd);
 console.log("serving files from:", directory);
+console.log("path under behavior", prefix)
 
 let files = {}; // {filename: content}
 let sentFiles = new Map();// {ws: {filename: content}}
@@ -109,8 +118,8 @@ function sendFiles(socket) {
         if (debug || (files[k] && files[k] !== sent[k])) {
             sent[k] = files[k];
             let systemModule = k.startsWith("croquet/");
-            console.log(k, systemModule);
-            toSend.push({action: "add", name: k, content: files[k], systemModule});
+            console.log(prefix + k, systemModule);
+            toSend.push({action: "add", name: prefix + k, content: files[k], systemModule});
         }
     });
 
