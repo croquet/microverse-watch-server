@@ -33,7 +33,7 @@ if (!directory) {
 let split = directory.split(path.sep);
 let behaviorIndex = split.indexOf("behaviors");
 if (behaviorIndex >= 0 && behaviorIndex !== split.length - 1) {
-    prefix = path.join(...split.slice(behaviorIndex + 1)) + "/";
+    prefix = path.join(...split.slice(behaviorIndex + 1)) + path.sep;
 }
 
 try {
@@ -117,9 +117,13 @@ function sendFiles(socket) {
     newKeys.forEach((k) => {
         if (debug || (files[k] && files[k] !== sent[k])) {
             sent[k] = files[k];
-            let systemModule = k.startsWith("croquet/");
-            console.log(prefix + k, systemModule);
-            toSend.push({action: "add", name: prefix + k, content: files[k], systemModule});
+            let systemModule = k.startsWith("croquet" + path.sep);
+            let nameToUse = prefix + k;
+            if (path.sep === "\\") {
+                nameToUse = nameToUse.replaceAll("\\", "/");
+            }
+            console.log(nameToUse, systemModule);
+            toSend.push({action: "add", name: nameToUse, content: files[k], systemModule});
         }
     });
 
