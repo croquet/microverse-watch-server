@@ -1,6 +1,6 @@
 {
     "name": "@croquet/microverse-watch-server",
-    "version": "1.0.6",
+    "version": "1.0.7",
     "description": "A server to serve behavior files for microverse",
     "bin": {
         "watch-server": "./watch-server.js"
@@ -29,7 +29,7 @@
         "online"
     ],
     "dependencies": {
-        "chokidar": "^3.5.3",
-        "ws": "^8.5.0"
+        "chokidar": "3.5.3",
+        "ws": "8.13.0"
     }
 }
