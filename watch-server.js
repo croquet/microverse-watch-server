@@ -51,9 +51,9 @@ console.log("path under behavior", prefix)
 let files = {}; // {filename: content}
 let sentFiles = new Map();// {ws: {filename: content}}
 
-let watcher = chokidar.watch('./**/*.js' ,{
+let watcher = chokidar.watch('./**/*\.(js|ts)' ,{
     persistent: true,
-    ignored: /\.#|^[#_]/
+    ignored: /\.#|^[#_]|d\.ts$/
 });
 
 watcher.on('add', name => {
